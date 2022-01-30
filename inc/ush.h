@@ -22,6 +22,12 @@
 
 #define PARSE_DELIMERS " \t\r\n\a"
 
+enum Builtin{
+    pwd;
+    
+}
+
+
 
 //Loop Functions
 void shell_loop(void);
@@ -40,8 +46,8 @@ void mx_free_double_ptr(void **ptr);//use only for NULL terminated arrays
 int launch_process(char **args);
 int mx_execute(char **args);
 
-
-
+//Built in funcs
+int bin_pwd();
 
 
 
