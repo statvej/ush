@@ -1,4 +1,4 @@
-#include "../inc/uls.h"
+#include "../inc/ush.h"
 
 int bin_pwd() {
     char *path = getenv("PWD");
@@ -8,4 +8,27 @@ int bin_pwd() {
         return -1;
     free(path);
     return 0;
+}
+int is_builtin(char *prog_name) {
+    char *builtin_avial[20] = {"pwd", "cd"};
+    return is_str_in_arr(prog_name, builtin_avial);
+}
+int execute_builtin(char **argv) {
+    pid_t pid;
+    int status;
+    pid = fork();
+    if (pid == 0) {
+        if (!strcmp(argv[0], "pwd"))
+            bin_pwd();
+        exit(EXIT_FAILURE);
+    }
+    if (pid < 0)
+        perror("fork");
+    if (pid > 0) {
+        do {
+
+            waitpid(pid, &status, WUNTRACED);
+        } while (!WIFEXITED(status) && !WIFSIGNALED(status));
+    }
+    return 1;
 }

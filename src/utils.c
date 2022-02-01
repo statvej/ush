@@ -1,9 +1,9 @@
 #include "../inc/ush.h"
 
-
-void mx_free_double_ptr(void **ptr) {
-    for (int i = 0; ptr[i] != NULL; i++) {
-        free(ptr[i]);
+int is_str_in_arr(char *str, char **str_arr) {
+    for (int i = 0; str_arr[i] != NULL; i++) {
+        if (!strcmp(str_arr[i], str))
+            return 1;
     }
-    free(ptr);
+    return 0;
 }

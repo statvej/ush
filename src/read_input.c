@@ -1,26 +1,7 @@
 #include "ush.h"
 
 // TODO Add cursor moving and displaying
-int check_arrow_input(int c) {//doesnt work
-    if (c == '\033') { // if the first value is esc
 
-        switch (c) { // the real value
-        case 'A':
-            break;
-        case 'B':
-            break;
-        case 'C':
-            printf("\033[C"); 
-            break;
-        case 'D':
-            printf("\033[D");
-            break;
-        }
-        return 1;
-    }
-    else
-        return 0;
-}
 
 char *read_input() {
     int position = 0, buf_size = READ_LINE_BUFFER_SIZE;
