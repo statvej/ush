@@ -1,35 +1,24 @@
-#include "ush.h"
-
+#include "../inc/ush.h"
 // TODO Add cursor moving and displaying
 
-
 char *read_input() {
-    int position = 0, buf_size = READ_LINE_BUFFER_SIZE;
     char *buf = (char *)malloc(sizeof(char) * READ_LINE_BUFFER_SIZE);
-    if (!buf)
-        exit(EXIT_FAILURE);
     int c;
-    while (true) {
-
+    int i = 0;
+    do {
         c = getchar();
-
-        if (c == EOF)
+        if (c == -1)
+        {
             exit(EXIT_SUCCESS);
-        else if (c == '\n') {
-            buf[position] = '\n'; 
-            return buf;
         }
-        else
-            buf[position] = c;
-        position++;
+        
+        buf[i] = c;
+        i++;
+        if (i >= READ_LINE_BUFFER_SIZE) {
+            buf = (char *)realloc(buf, sizeof(char) * (i + READ_LINE_BUFFER_SIZE));
+        }
+    } while (c != '\n');
+    buf[i] = '\0';
 
-        if (position >= buf_size) {
-            buf_size += READ_LINE_BUFFER_SIZE;
-            buf = (char *)realloc(buf, buf_size);
-            if (!buf) {
-                mx_printerr("Allocation error in buffer realloc\n");
-                exit(EXIT_FAILURE);
-            }
-        }
-    }
-} 
+    return buf;
+}

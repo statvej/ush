@@ -16,10 +16,12 @@ int bin_exit(){
     return 0;
 }
 
+
 int is_builtin(char *prog_name) {
     char *builtin_avial[20] = {"pwd", "cd", "exit", NULL};
     return is_str_in_arr(prog_name, builtin_avial);
 }
+
 int execute_builtin(char **argv) {
     pid_t pid;
     int status;
@@ -28,10 +30,10 @@ int execute_builtin(char **argv) {
         if (!strcmp(argv[0], "pwd")) {
             exit(bin_pwd());
         }
-        if (!strcmp(argv[0], "exit")) {
+        // if (!strcmp(argv[0], "exit")) {
             
-            exit(bin_exit());
-        }
+        //     exit(bin_exit());
+        // }
 
         exit(EXIT_FAILURE);
     }
