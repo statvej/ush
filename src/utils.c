@@ -7,3 +7,4 @@ int is_str_in_arr(char *str, char **str_arr) {
     }
     return 0;
 }
+ 

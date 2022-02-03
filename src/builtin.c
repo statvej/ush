@@ -1,16 +1,21 @@
 #include "../inc/ush.h"
 
 int bin_pwd() {
-    char *path = getenv("PWD");
-    if (!path)
+    char *path = mx_strdup(getenv("PWD"));
+    if (path != NULL) {
         printf("%s\n", path);
+    }
     else
         return -1;
     free(path);
     return 0;
 }
+int bin_exit(){
+    return -1;
+}
+
 int is_builtin(char *prog_name) {
-    char *builtin_avial[20] = {"pwd", "cd"};
+    char *builtin_avial[20] = {"pwd", "cd", "exit", NULL};
     return is_str_in_arr(prog_name, builtin_avial);
 }
 int execute_builtin(char **argv) {
@@ -18,8 +23,14 @@ int execute_builtin(char **argv) {
     int status;
     pid = fork();
     if (pid == 0) {
-        if (!strcmp(argv[0], "pwd"))
-            bin_pwd();
+        if (!strcmp(argv[0], "pwd")) {
+            exit(bin_pwd());
+        }
+        if (!strcmp(argv[0], "exit")) {
+            
+            exit(bin_exit());
+        }
+
         exit(EXIT_FAILURE);
     }
     if (pid < 0)

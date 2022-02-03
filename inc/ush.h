@@ -11,7 +11,7 @@
 #include <unistd.h>
 #include <sys/stat.h>
 #include <dirent.h>
-#include <termcap.h>
+#include <termcap.h> 
 #include <time.h>
 #include <pwd.h>
 #include <sys/types.h>
@@ -27,7 +27,7 @@
 // enum Builtin{
 //     pwd;
 
-// }
+// } 
 
 typedef struct s_input {
     char *command;
@@ -57,3 +57,4 @@ int mx_execute(char **args);
 int bin_pwd();
 int is_builtin(char *prog_name);
 int execute_builtin(char ** argv);
+int bin_exit();

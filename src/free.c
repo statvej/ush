@@ -7,3 +7,4 @@ void mx_free_double_ptr(void **ptr) {
     }
     free(ptr);
 }
+ 

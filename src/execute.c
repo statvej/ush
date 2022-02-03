@@ -21,7 +21,7 @@ int launch_process(char **args) {
         do {
             waitpid(pid, &status, WUNTRACED);
         } while (!WIFEXITED(status) && !WIFSIGNALED(status));
-    }
+    } 
 
     return 1;
 }

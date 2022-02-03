@@ -25,7 +25,7 @@ char **parse_input(char *input) {
                 exit(EXIT_FAILURE);
             }
         }
-
+ 
         s_arg = strtok(NULL, PARSE_DELIMERS);
     }
     argv[position] = NULL;

@@ -16,7 +16,7 @@ char *read_input() {
         if (c == EOF)
             exit(EXIT_SUCCESS);
         else if (c == '\n') {
-            buf[position] = '\n';
+            buf[position] = '\n'; 
             return buf;
         }
         else
@@ -32,4 +32,4 @@ char *read_input() {
             }
         }
     }
-}
+} 
