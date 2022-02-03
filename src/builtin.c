@@ -11,7 +11,9 @@ int bin_pwd() {
     return 0;
 }
 int bin_exit(){
-    return -1;
+    printf("EXIT ENTEREDn");
+    errno = 2;
+    return 0;
 }
 
 int is_builtin(char *prog_name) {

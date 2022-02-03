@@ -15,6 +15,12 @@ void shell_loop(void) {
         status = mx_execute(argv);
         free(input);
         free(argv);
+        int exit_stat = errno;
+        if (exit_stat == ERRNO_EXIT)
+        {
+            exit(EXIT_SUCCESS);
+        }
+        
     } while (status);
 }
  

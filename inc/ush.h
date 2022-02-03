@@ -22,6 +22,8 @@
 
 #define PARSE_DELIMERS " \t\r\n\a"
 
+#define ERRNO_EXIT 2
+
 
 
 // enum Builtin{
